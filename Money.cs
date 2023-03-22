@@ -46,6 +46,22 @@
             this.purchasePrice = purchasePrice;
         }
 
+        public void setType(int type)
+        {
+            if (type == 1)
+            {
+                buy = true;
+                rent = false;
+                rentalAmount = 0;
+            }
+            else if(type == 0)
+            {
+                rent = true;
+                buy = false;
+                purchasePrice = 0;
+            }
+        }
+
         
     }
 }

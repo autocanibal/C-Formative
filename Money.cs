@@ -36,6 +36,7 @@
                 Console.WriteLine("Please enter the purchase amount: ");
                 purchasePrice = double.Parse(Console.ReadLine());
 
+
                 
             }
             else if (type == 0)

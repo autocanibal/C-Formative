@@ -14,6 +14,11 @@
             this.monthlyDeductions = monthlyDeductions;
         }
 
+        public void setMonthlyExpense(double monthlyExpense)
+        {
+            this.monthlyExpense = monthlyExpense;
+        }
+
         public void setRentalAmount(double rentalAmount)
         {
             this.rentalAmount = rentalAmount;
@@ -49,12 +54,18 @@
                 buy = true;
                 rent = false;
                 rentalAmount = 0;
+                Console.WriteLine("Please enter the purchase amount: ");
+                Console.WriteLine(buy);
+                Console.WriteLine(rent);
             }
             else if (type == 0)
             {
                 rent = true;
                 buy = false;
                 purchasePrice = 0;
+                Console.WriteLine("Please enter your rental amount: ");
+                Console.WriteLine(buy);
+                Console.WriteLine(rent);
             }
         }
     }

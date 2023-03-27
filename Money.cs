@@ -17,33 +17,39 @@
         
         public void setRemainingMoney(double incomeAfterTax, double monthlyExpense) { remainingMoney = incomeAfterTax - monthlyExpense; }
 
-        public void setInterestRate(double interestRate){ this.interestRate = interestRate; }
-
-        public void setDeposit(double deposit){ this.deposit = deposit; }
-
         private int repaymentMonths;
-        private bool rent, buy;
-
-        public void setRepaymentMonths(int repaymentMonths){ this.repaymentMonths = repaymentMonths; }
 
         public void setType(int type)
         {
             if (type == 1)
             {
-                buy = true;
-                rent = false;
-                rentalAmount = 0;
                 Console.WriteLine("Please enter the purchase amount: ");
                 purchasePrice = double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the deposit amount: ");
+                deposit = double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the interest rate in decimal form: ");
+                interestRate = double.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the length of repayment in months: ");
+                repaymentMonths = int.Parse(Console.ReadLine());
 
+                double homeLoanAmount = purchasePrice - deposit;
+                double totalLoanAmount = homeLoanAmount * (1 + interestRate * (repaymentMonths / 12));
+                double monthlyLoanAmount = totalLoanAmount / repaymentMonths;
+                double availableFunds = remainingMoney - monthlyLoanAmount;
+                if (monthlyLoanAmount > (grossIncome / 3)) { 
+                    Console.WriteLine("You will likely be rejected as the repayment is more than a third of your income");
+                    Console.WriteLine("Your monthly repayments would be :R"+monthlyLoanAmount);
+                    Console.WriteLine("Your available funds after loan repayment is: R" + availableFunds);
 
-                
+                }
+                else { 
+                    Console.WriteLine("Your monthly repayments will be :R"+monthlyLoanAmount);
+                    Console.WriteLine("Your available funds after loan repayment is: R" + availableFunds);
+                }
+
             }
             else if (type == 0)
             {
-                rent = true;
-                buy = false;
-                purchasePrice = 0;
                 Console.WriteLine("Please enter your rental amount: ");
                 rentalAmount = double.Parse(Console.ReadLine());
                 double availableFunds = remainingMoney - rentalAmount;

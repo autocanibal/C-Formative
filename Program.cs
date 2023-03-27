@@ -38,7 +38,8 @@ class Program
         }catch (Exception ex)
         {
             Console.WriteLine("There was an error. Please start again");
-        }
+                Console.WriteLine(ex.ToString());
+            }
         }
         
         
